@@ -83,3 +83,14 @@ dbt run
 dbt docs generate
 dbt docs serve
 
+## 🧭 Architecture Diagram
+
+```mermaid
+flowchart LR
+    A[CSV Data Source] --> B[AWS S3 - Data Lake]
+    B --> C[Snowflake RAW Layer]
+    C --> D[dbt Staging Models]
+    D --> E[dbt Marts Models]
+    E --> F[Semantic Layer]
+    F --> G[Power BI / Tableau Dashboards]
+
