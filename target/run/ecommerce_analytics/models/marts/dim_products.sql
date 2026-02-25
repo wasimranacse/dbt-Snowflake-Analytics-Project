@@ -1,0 +1,22 @@
+
+  
+    
+
+create or replace transient table ECOMMERCE_ANALYTICS.MARTS.dim_products
+    
+    
+    
+    as (
+
+SELECT
+    product_name,
+    COUNT(DISTINCT order_number) AS total_orders,
+    SUM(item_sold) AS total_items,
+    SUM(net_revenue) AS total_revenue
+FROM ECOMMERCE_ANALYTICS.STAGING.stg_orders
+GROUP BY 1
+    )
+;
+
+
+  
